@@ -1,0 +1,9 @@
+<p>chessboard works!</p>
+
+<div class="chess-board">
+    <div *ngFor="let row of board; let i = index" class="row">
+      <div *ngFor="let square of row; let j = index" class="square" [ngClass]="{ 'highlight': possibleMoves.includes([i, j]) }">
+        {{ i }}, {{ j }}
+      </div>
+    </div>
+  </div>

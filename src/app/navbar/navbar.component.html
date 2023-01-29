@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" >Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/csv">All Books Database</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/export">Export Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/knight">Knight Movement</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Brief Instructions</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">This app has three sections</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <a routerLink="/csv"><h3>Get Book details from CSV upload</h3></a>
+            <p>Upload your csv file and it will uploaded and saved to the database and stored in the collection</p>
+          </div>
+          <div class="col-sm-4">
+            <a routerLink="/export"><h3>Search books based on author email and book isbn</h3></a>
+            <p>Search books based on authors and ISBN number of book and after fetching export it</p>
+          </div>
+          <div class="col-sm-4">
+            <a routerLink="/knight">            <h3>Get all possible knight moves from current position</h3></a>
+            <p>Get all possible moves by chess kniht piece from its current position assuming there are no other pieces</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+      </div> -->
+    </div>
+  </div>
