@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { environment } from '../environments/environment.prod';
 
 @Component({
@@ -12,11 +12,7 @@ export class CsvdataComponent {
   previewUrl: any = null;
   uploadedFilePath: string | any = null;
   data:  any;
-  books: any;
-  searchParams = {
-    authors: '',
-    isbn: ''
-  };
+
   constructor(private http: HttpClient) { }
   ngOnInit() {
     this.getData()
@@ -33,7 +29,6 @@ export class CsvdataComponent {
     if (mimeType.match('text'||'CSV') == null) {
       return;
     }
-
     const reader = new FileReader();
     reader.readAsDataURL(this.fileData);
     // tslint:disable-next-line:variable-name
@@ -42,20 +37,9 @@ export class CsvdataComponent {
     };
   }
 
-  onImageChange(event: any) {
-    if (event.target.value.length !== 0) {
-      this.fileData = event.target.files[0];
-      let reader = new FileReader();
-      const context = this;
-      reader.readAsDataURL(this.fileData);
-      reader.onload = function () {
-        context.fileData = reader.result;
-      };
-      reader.onerror = function (error) { };
-    }
-  }
 
   onSubmitUpload() {
+    console.log("vvv",environment.BASE_URL)
     const formData = new FormData();
     formData.append('csvFile', this.fileData);
     this.http.post <Doco>(environment.BASE_URL+'/upload', formData)
@@ -68,30 +52,8 @@ export class CsvdataComponent {
       });
   }
 
-  onSubmitDownload(parameter: string | string[], value: string) {
-    this.http.get (environment.BASE_URL+`/getbooks/query?${parameter}=${value}&export=yes`,  { responseType: 'blob' })
-      .subscribe((response: any) => {
-        console.log("response",response)
-        const dataType = response.type;
-        const binaryData = [];
-        binaryData.push(response);
-        const downloadLink = document.createElement('a');
-        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, {type: dataType}));
-        if (value) {
-          downloadLink.setAttribute('download', value);
-        }
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-      });
-  }
   async getData() {
     this.data = await this.http.get(environment.BASE_URL+'/getallbooks').toPromise();
-  }
-  search() {
-    this.http.get(environment.BASE_URL+`/getbooks/query?authors=${this.searchParams.authors}&isbn=${this.searchParams.isbn}`)
-      .subscribe(data => {
-        this.books = data;
-      });
   }
  
 }
