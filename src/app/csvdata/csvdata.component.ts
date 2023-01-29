@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import * as Json2csv from 'json2csv';
-import * as FileSaver from 'file-saver';
+import { environment } from '../environments/environment.prod';
 
 @Component({
   selector: 'app-csvdata',
@@ -59,7 +58,7 @@ export class CsvdataComponent {
   onSubmitUpload() {
     const formData = new FormData();
     formData.append('csvFile', this.fileData);
-    this.http.post <Doco>('http://localhost:3000/upload', formData)
+    this.http.post <Doco>(environment.BASE_URL+'/upload', formData)
       .subscribe((resp: { filename: any; }) => {
         this.uploadedFilePath =  resp.filename;
         alert('SUCCESS !!');
@@ -70,7 +69,7 @@ export class CsvdataComponent {
   }
 
   onSubmitDownload(parameter: string | string[], value: string) {
-    this.http.get (`http://localhost:3000/getbooks/query?${parameter}=${value}&export=yes`,  { responseType: 'blob' })
+    this.http.get (environment.BASE_URL+`/getbooks/query?${parameter}=${value}&export=yes`,  { responseType: 'blob' })
       .subscribe((response: any) => {
         console.log("response",response)
         const dataType = response.type;
@@ -86,10 +85,10 @@ export class CsvdataComponent {
       });
   }
   async getData() {
-    this.data = await this.http.get('http://localhost:3000/getallbooks').toPromise();
+    this.data = await this.http.get(environment.BASE_URL+'/getallbooks').toPromise();
   }
   search() {
-    this.http.get(`http://localhost:3000/getbooks/query?authors=${this.searchParams.authors}&isbn=${this.searchParams.isbn}`)
+    this.http.get(environment.BASE_URL+`/getbooks/query?authors=${this.searchParams.authors}&isbn=${this.searchParams.isbn}`)
       .subscribe(data => {
         this.books = data;
       });

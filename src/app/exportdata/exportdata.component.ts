@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import * as Papa from 'papaparse';
+import { environment } from '../environments/environment.prod';
 
 @Component({
   selector: 'app-exportdata',
@@ -17,7 +18,7 @@ export class ExportdataComponent {
   ngOnInit() {
   }
   async search() {
-    this.books = await this.http.get(`http://localhost:3000/getbooks/query?authors=${this.searchParams.authors}&isbn=${this.searchParams.isbn}`).toPromise();
+    this.books = await this.http.get(environment.BASE_URL+`/getbooks/query?authors=${this.searchParams.authors}&isbn=${this.searchParams.isbn}`).toPromise();
   }
   convertToCSV(jsonData: any) {
     const csv = Papa.unparse(jsonData);
