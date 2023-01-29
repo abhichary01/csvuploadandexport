@@ -44,14 +44,15 @@
   <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroup-sizing-default">X Coordinate:</span>
   </div>
-  <input type="number" class="form-control" id="x" [(ngModel)]="x" (change)="getMoves()" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  <input type="number" [min]="0"[max]="8" class="form-control" id="x" [(ngModel)]="x" (change)="getMoves()" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+
 </div>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroup-sizing-default">Y Coordinate:</span>
   </div>
-  <input type="number" class="form-control" id="y" [(ngModel)]="y" (change)="getMoves()" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  <input type="number" [min]="0" [max]="8" class="form-control" id="y" [(ngModel)]="y" (change)="getMoves()" aria-label="Default" aria-describedby="inputGroup-sizing-default">
 </div>
 
 <div *ngIf="moves.length" class="card">

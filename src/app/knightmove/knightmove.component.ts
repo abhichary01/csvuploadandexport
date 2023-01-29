@@ -18,10 +18,14 @@ export class KnightmoveComponent implements OnInit {
   ngOnInit() {}
 
   getMoves() {
-    this.http
+    if(this.x>8 || this.y>8){
+      alert('please enter values less than or equal to 8');
+    }else{
+      this.http
       .post('http://localhost:3000/knight/moves', { x: this.x, y: this.y })
       .subscribe((response: any) => {
         this.moves = response;
       });
+    }
   }
 }
