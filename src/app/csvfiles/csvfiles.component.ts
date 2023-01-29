@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
 import { environment } from '../environments/environment.prod';
 
 @Component({
-  selector: 'app-csvdata',
-  templateUrl: './csvdata.component.html',
-  styleUrls: ['./csvdata.component.css']
+  selector: 'app-csvfiles',
+  templateUrl: './csvfiles.component.html',
+  styleUrls: ['./csvfiles.component.css']
 })
-export class CsvdataComponent {
+export class CsvfilesComponent {
   fileData: File | any = null;
   previewUrl: any = null;
   uploadedFilePath: string | any = null;
@@ -55,9 +55,7 @@ export class CsvdataComponent {
   async getData() {
     this.data = await this.http.get(environment.BASE_URL+'/getallbooks').toPromise();
   }
- 
 }
-
 export interface Doco {
   filename: string;
   size: number;

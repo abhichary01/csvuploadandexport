@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CsvdataComponent } from './csvdata.component';
+import { CsvfilesComponent } from './csvfiles.component';
 
-describe('CsvdataComponent', () => {
-  let component: CsvdataComponent;
-  let fixture: ComponentFixture<CsvdataComponent>;
+describe('CsvfilesComponent', () => {
+  let component: CsvfilesComponent;
+  let fixture: ComponentFixture<CsvfilesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CsvdataComponent ]
+      declarations: [ CsvfilesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CsvdataComponent);
+    fixture = TestBed.createComponent(CsvfilesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
