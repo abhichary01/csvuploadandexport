@@ -54,7 +54,10 @@ export class CsvfilesComponent {
 
   async getData() {
     this.data = await this.http.get(environment.BASE_URL+'/getallbooks').toPromise();
-  }
+    }
+    catch (error: any) {
+    console.error(error);
+    };
 }
 export interface Doco {
   filename: string;
